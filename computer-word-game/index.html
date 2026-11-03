@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Computer Word Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1 class="sr-only">Computer word game</h1>
+    <div class="computer" id="computer" role="button" tabindex="0" aria-label="Turn on the computer">
+      <img class="frame frame-off" id="frame-off" src="images/off.png" width="816" height="836" alt="Computer turned off" draggable="false">
+      <img class="frame frame-on" id="frame-on" src="images/on.png" width="816" height="836" alt="" draggable="false" hidden>
+      <div class="screen" id="screen" hidden>
+        <div class="log" id="log" role="log" aria-live="polite" aria-relevant="additions text"></div>
+        <form class="guess-form" id="guess-form" autocomplete="off">
+          <label class="sr-only" for="guess">Type a guess</label>
+          <span class="prompt" aria-hidden="true">&gt;</span>
+          <input id="guess" name="guess" type="text" maxlength="32" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="type a guess" enterkeyhint="done">
+        </form>
+        <div class="end" id="win" hidden>
+          <p class="end-title">You got it</p>
+          <p class="end-word" id="win-word"></p>
+          <p class="end-time" id="win-time"></p>
+          <p class="end-note" id="win-board-label">Easy</p>
+          <ol class="board" id="win-board" aria-label="Easy leaderboard"></ol>
+          <button type="button" class="screen-btn" id="continue-btn">Continue</button>
+        </div>
+        <div class="end" id="over" hidden>
+          <p class="end-title">Game over</p>
+          <p class="end-note">The word was</p>
+          <p class="end-word" id="over-word"></p>
+          <button type="button" class="screen-btn" id="over-continue">Continue</button>
+        </div>
+      </div>
+    </div>
+    <div class="controls">
+      <div class="difficulty" role="group" aria-label="Difficulty">
+        <button type="button" class="diff-btn is-selected" id="diff-easy" aria-pressed="true">Easy</button>
+        <button type="button" class="diff-btn" id="diff-hard" aria-pressed="false">Hard</button>
+      </div>
+      <label class="name-field">
+        <span class="sr-only">Name for the leaderboard</span>
+        <input id="player-name" type="text" maxlength="16" placeholder="Your name" autocomplete="nickname" spellcheck="false">
+      </label>
+      <button type="button" class="diff-btn" id="reset-btn" disabled>Reset</button>
+    </div>
+    <p class="caption" id="caption">Click the computer to turn it on.</p>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
